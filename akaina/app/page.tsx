@@ -1,6 +1,11 @@
 import Image from "next/image";
-import { useEffect, useState } from 'react';
 
+/**
+ * Fetches data from the specified API endpoint.
+ *
+ * @return {Promise<string>} The response text from the API.
+ * @throws {Error} If the API request fails.
+ */
 async function getData() {
   const res = await fetch('http://localhost:3001/api', {
     cache: 'no-store', // Ensure that the data is fetched fresh each time
