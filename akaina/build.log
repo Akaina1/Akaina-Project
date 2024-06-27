@@ -1,0 +1,101 @@
+#0 building with "default" instance using docker driver
+
+#1 [app internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [app internal] load build definition from Dockerfile
+#1 transferring dockerfile: 606B done
+#1 DONE 0.1s
+
+#2 [app internal] load metadata for docker.io/oven/bun:1
+#2 DONE 0.2s
+
+#3 [app internal] load .dockerignore
+#3 transferring context: 383B done
+#3 DONE 0.1s
+
+#4 [app production 1/7] FROM docker.io/oven/bun:1@sha256:7b5c05b562efbbec704df426a9eef18f3b935bdc868678895a935bf120bda062
+#4 DONE 0.0s
+
+#5 [app internal] load build context
+#5 transferring context: 10.27kB 0.0s done
+#5 DONE 0.1s
+
+#6 [app production 2/7] WORKDIR /app
+#6 CACHED
+
+#7 [app base 3/5] COPY package.json bun.lockb ./
+#7 CACHED
+
+#8 [app base 4/5] RUN bun install
+#8 CACHED
+
+#9 [app base 5/5] COPY . .
+#9 DONE 1.8s
+
+#10 [app build 1/1] RUN bun next build
+#10 1.882 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 1.882 This information is used to shape Next.js' roadmap and prioritize features.
+#10 1.882 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 1.882 https://nextjs.org/telemetry
+#10 1.882 
+#10 1.981   ▲ Next.js 14.2.4
+#10 1.981 
+#10 2.027    Creating an optimized production build ...
+#10 18.82  ✓ Compiled successfully
+#10 18.83    Linting and checking validity of types ...
+#10 25.68    Collecting page data ...
+#10 26.49    Generating static pages (0/5) ...
+#10 27.52    Generating static pages (1/5) 
+#10 27.52    Generating static pages (2/5) 
+#10 27.68    Generating static pages (3/5) 
+#10 28.56  ✓ Generating static pages (5/5)
+#10 28.79    Finalizing page optimization ...
+#10 28.79    Collecting build traces ...
+#10 34.69 
+#10 34.70 Route (app)                              Size     First Load JS
+#10 34.70 ┌ ƒ /                                    5.23 kB        92.3 kB
+#10 34.70 ├ ○ /_not-found                          875 B          87.9 kB
+#10 34.70 └ ƒ /api/[[...slugs]]                    0 B                0 B
+#10 34.70 + First Load JS shared by all            87 kB
+#10 34.70   ├ chunks/23-ef3c75ca91144cad.js        31.5 kB
+#10 34.70   ├ chunks/fd9d1056-2821b0f0cabcd8bd.js  53.7 kB
+#10 34.70   └ other shared chunks (total)          1.85 kB
+#10 34.70 
+#10 34.70 
+#10 34.70 ○  (Static)   prerendered as static content
+#10 34.70 ƒ  (Dynamic)  server-rendered on demand
+#10 34.70 
+#10 DONE 35.0s
+
+#6 [app production 2/7] WORKDIR /app
+#6 CACHED
+
+#11 [app production 3/7] COPY --from=build /app/.next ./.next
+#11 DONE 0.9s
+
+#12 [app production 4/7] COPY --from=build /app/public ./public
+#12 DONE 0.3s
+
+#13 [app production 5/7] COPY --from=build /app/package.json ./
+#13 DONE 0.2s
+
+#14 [app production 6/7] COPY --from=build /app/bun.lockb ./
+#14 DONE 0.2s
+
+#15 [app production 7/7] COPY --from=build /app/node_modules ./node_modules
+#15 DONE 5.0s
+
+#16 [app] exporting to image
+#16 exporting layers
+#16 exporting layers 4.1s done
+#16 writing image sha256:75b376d22f744bc1d6918730105968dd7e51222afede80181e2d912fd99ee491
+#16 writing image sha256:75b376d22f744bc1d6918730105968dd7e51222afede80181e2d912fd99ee491 0.0s done
+#16 naming to docker.io/library/akaina-app 0.0s done
+#16 DONE 4.2s
+Attaching to app-1
+app-1  |   ▲ Next.js 14.2.4
+app-1  |   - Local:        http://localhost:3000
+app-1  | 
+app-1  |  ✓ Starting...
+[Kapp-1 exited with code 1
