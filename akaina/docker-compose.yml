@@ -1,14 +1,18 @@
-version: '3.8'  # Updated version for Docker Compose
-
+version: '3'
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=${NODE_ENV} # Pass NODE_ENV during build
+    env_file:
+      - .env.${NODE_ENV}  # Load the appropriate .env file
     ports:
-      - '3001:3001'
-    environment:
-      - NODE_ENV=development
-      - PORT=3001
+      - '3000:3000'
+    command: >        # Conditional command based on NODE_ENV
+      sh -c "if [ '${NODE_ENV}' = 'development' ]; then bun run dev; else bun next start; fi"
+    #  Volumes (uncomment for development ONLY):
     volumes:
       - .:/app
-      - /app/node_modules
-    command: ["bun", "run", "dev"]
+      - /app/node_modules 

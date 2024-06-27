@@ -7,7 +7,7 @@ import Image from "next/image";
  * @throws {Error} If the API request fails.
  */
 async function getData() {
-  const res = await fetch('http://localhost:3001/api', {
+  const res = await fetch('http://localhost:3000/api', {
     cache: 'no-store', // Ensure that the data is fetched fresh each time
   });
   if (!res.ok) {

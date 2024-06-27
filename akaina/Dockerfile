@@ -1,25 +1,34 @@
-# Use the official Bun image
-FROM oven/bun:1
+# Base stage
+FROM oven/bun:1 as base
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and bun.lockb to the container
 COPY package.json bun.lockb ./
-
-# Install all dependencies (including dev dependencies)
 RUN bun install
 
-# Copy the application files to the container
 COPY . .
 
-# Set environment variables
-ENV NODE_ENV development
-ENV PORT 3001
-ENV HOST 0.0.0.0
+# Build stage for production
+FROM base as build
 
-# Expose the application port
-EXPOSE 3001
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-# Command to run the application in development mode
-CMD ["bun", "run", "dev"]
+RUN if [ "$NODE_ENV" = "production" ]; then bun next build; fi
+
+# Final stage
+FROM oven/bun:1 as final
+
+WORKDIR /app
+
+COPY --from=base /app /app
+
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+
+ENV NODE_ENV=production
+ENV PORT=3000
+EXPOSE 3000
+
+# Temporary command to check the .next directory
+CMD ["ls", "-la", ".next"]
