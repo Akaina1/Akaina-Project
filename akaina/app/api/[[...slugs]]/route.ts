@@ -2,7 +2,7 @@
 import { Elysia, t } from 'elysia'
 
 const app = new Elysia({ prefix: '/api' })
-    .get('/', () => 'hello Next - From Elysia 13.0.0')
+    .get('/', () => 'Hello Next.js - From Elysia')
     .post('/', ({ body }) => body, {
         body: t.Object({
             name: t.String()
