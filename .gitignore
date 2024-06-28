@@ -25,9 +25,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# Ignore all .env files
 .env*
+
+# Ignore specific .env files in the 'akaina' directory
 akaina/.env
 akaina/.env.development
 akaina/.env.production
