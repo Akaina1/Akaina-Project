@@ -8,12 +8,13 @@
     "start": "bun next start"
   },
   "dependencies": {
-    "elysia": "^1.0.25",
+    "@elysiajs/eden": "^1.0.14",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "elysia": "^1.0.25",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
