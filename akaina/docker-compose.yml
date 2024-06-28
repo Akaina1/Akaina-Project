@@ -12,6 +12,6 @@ services:
     command: >
       sh -c "if [ '${NODE_ENV}' = 'development' ]; then bun run dev; else bun run start; fi"
     #  Volumes (uncomment for development ONLY):
-    # volumes:
-    #   - .:/app
-    #   - /app/node_modules 
+    volumes:
+      - .:/app
+      - /app/node_modules 

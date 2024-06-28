@@ -1,13 +1,7 @@
 import Image from "next/image";
-
-/**
- * Fetches data from the specified API endpoint.
- *
- * @return {Promise<string>} The response text from the API.
- * @throws {Error} If the API request fails.
- */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function getData() {
-  const res = await fetch('http://localhost:3000/api', {
+  const res = await fetch('http://localhost:3000/api/hello', {
     cache: 'no-store', // Ensure that the data is fetched fresh each time
   });
   if (!res.ok) {
@@ -15,16 +9,21 @@ async function getData() {
   }
   return res.text();
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default async function Home() {
   const message = await getData(); 
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         
-        <p className="flex h-16 w-full text-2xl text-pink-400 font-mono font-extrabold items-center justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black">{message}</p> {/* This line will display the fetched data */}
+        <p className="flex h-16 w-full text-xl text-pink-400 font-mono 
+        font-extrabold items-center justify-center bg-gradient-to-l from-transparent via-white
+        sm:text-4xl">{message}</p> {/* This line will display the fetched data */}
         
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center 
+        bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
