@@ -27,6 +27,9 @@ yarn-error.log*
 
 # local env files
 .env*
+akaina/.env
+akaina/.env.development
+akaina/.env.production
 
 # vercel
 .vercel
@@ -34,6 +37,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-akaina/.env
-akaina/.env.development
-akaina/.env.production
